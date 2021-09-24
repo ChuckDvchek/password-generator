@@ -15,9 +15,18 @@ var pwOptions = {
 
 function promptUser() {
   pwLength = prompt("How many characters do you want in your password? Enter a number between 8 and 128 (inclusive).","");
-  pwLength = Number(pwLength);
-  console.log(pwLength);
   
+  if(pwLength===null){
+    return;
+  }
+  
+  pwLength = Number(pwLength);
+  
+  if(isNaN(pwLength)){
+    alert("Please enter a number.");
+    return promptUser();
+  }
+
   if((pwLength < 8) || (pwLength > 128)) {
     alert("You must enter a number between 7 and 129.");
     return promptUser();
